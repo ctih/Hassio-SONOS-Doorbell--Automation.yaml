@@ -1,0 +1,26 @@
+- id: '1550173134435'
+  alias: SONOS Doorbell
+  trigger: []
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.sonos
+    service: media_player.sonos_snapshot
+  - data:
+      entity_id: media_player.sonos
+    service: media_player.sonos_unjoin
+  - data:
+      entity_id: media_player.sonos
+      volume_level: '0.35'
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.sonos
+      media_content_id: https://yourhassio.duckdns.org/local/doorbell.mp3
+      media_content_type: music
+    service: media_player.play_media
+  - delay: 00:00:02
+  - timeout: 00:01:00
+    wait_template: '{{ is_state(''media_player.sonos'', ''paused'') }}'
+  - data:
+      entity_id: media_player.sonos
+    service: media_player.sonos_restore
