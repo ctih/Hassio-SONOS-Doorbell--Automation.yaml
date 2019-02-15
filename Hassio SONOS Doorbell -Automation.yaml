@@ -15,7 +15,7 @@
     service: media_player.volume_set
   - data:
       entity_id: media_player.sonos
-      media_content_id: https://yourhassio.duckdns.org/local/doorbell.mp3
+      media_content_id: https://yourhassio.duckdns.org/local/doorbell.mp3 #Local Samba share location: \\hassio\config\www\Doorbell.mp3
       media_content_type: music
     service: media_player.play_media
   - delay: 00:00:02
